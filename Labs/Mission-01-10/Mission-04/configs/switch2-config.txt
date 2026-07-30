@@ -1,0 +1,38 @@
+enable
+Switch#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 1o
+                    ^
+% Invalid input detected at '^' marker.
+	
+Switch(config)#vlan 10
+Switch(config-vlan)#name HR1
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/1
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#exit
+Switch(config)#interface range fa0/2
+Switch(config-if-range)#exit
+Switch(config)#vlan 20
+Switch(config-vlan)#name IT1
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/2
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#exit
+Switch(config)#vlan 30
+Switch(config-vlan)#name sales
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/3
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 30
+Switch(config-if-range)#exit
+Switch(config)#interface fa0/24
+Switch(config-if)#switchport mode trunk
+
+Switch(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/24, changed state to up
+

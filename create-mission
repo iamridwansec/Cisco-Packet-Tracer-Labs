@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# ==========================================
+# Cisco Packet Tracer Lab Creator
+# ==========================================
+
+BASE="$HOME/Cyberlab/PacketTracer/Cisco-Packet-Tracer-Labs/Labs"
+
+echo "=========================================="
+echo " Cisco Packet Tracer Mission Creator"
+echo "=========================================="
+echo
+
+read -p "Enter mission number (1-40): " num
+
+# Validate input
+#
+if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+    echo "Invalid mission number."
+    exit 1
+fi
+
+if [ "$num" -lt 1 ] || [ "$num" -gt 40 ]; then
+    echo "Mission number must be between 1 and 40."
+    exit 1
+fi
+
+# Format mission number
+MISSION=$(printf "%02d" "$num")
+
+# Determine mission group
+if [ "$num" -le 10 ]; then
+    GROUP="Mission-01-10"
+elif [ "$num" -le 20 ]; then
+    GROUP="Mission-11-20"
+
+elif [ "$num" -le 30 ]; then
+    GROUP="Mission-21-30"
+else
+    GROUP="Mission-31-40"
+fi
+
+MISSION_DIR="$BASE/$GROUP/Mission-$MISSION"
+
+# Prevent overwrite
+if [ -d "$MISSION_DIR" ]; then
+    echo
+    echo "Mission-$MISSION already exists."
+    exit 1
+fi
+
+echo
+echo "Creating Mission-$MISSION..."
+echo
+
+mkdir -p "$MISSION_DIR"/configs
+mkdir -p "$MISSION_DIR"/screenshots/{topology,cli,ping,simulation}
+
+touch "$MISSION_DIR"/mission.md
+touch "$MISSION_DIR"/topology.pkt
+
+echo "# Mission $MISSION" > "$MISSION_DIR/mission.md"
+
+echo "Mission created successfully."
+echo
+echo "Location:"
+echo "$MISSION_DIR"
+echo
+
+tree "$MISSION_DIR"
+
+echo
+echo "Ready to start Mission-$MISSION!"
+

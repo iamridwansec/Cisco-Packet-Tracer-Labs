@@ -1,0 +1,20 @@
+
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#no auto-summary
+Router(config-router)#
+Router(config-router)#network 10.0.23.0
+Router(config-router)#network 192.168.30.0
+Router(config-router)#
+Router(config-router)#end
+Router#write
+%SYS-5-CONFIG_I: Configured from console by console
+
+Building configuration...
+[OK]
+
+
