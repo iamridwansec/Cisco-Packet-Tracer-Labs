@@ -60,7 +60,6 @@ Provides communication between a local network and an ISP's network.
 
 When data moves down the networking stack, each layer adds information required for communication.
 
-```text
 Application Data
       ↓
 TCP/UDP Segment
@@ -73,32 +72,35 @@ Bits
 
 At the destination, the process is reversed through decapsulation.
 
-Important Networking Terms
-Bandwidth — Maximum theoretical data capacity.
-Throughput — Actual amount of data successfully transferred.
-Latency — Delay between sending and receiving data.
-Protocol — Rules used for communication.
-Frame — Layer 2 data unit.
-Packet — Layer 3 data unit.
-Segment — Common term for a TCP Layer 4 data unit.
-Port — Logical endpoint used by applications.
-MAC address — Layer 2 hardware address.
-IP address — Layer 3 logical address.
-Traffic Types
-Unicast
+### Important Networking Terms
+
+**Bandwidth** — Maximum theoretical data capacity.
+**Throughput** — Actual amount of data successfully transferred.
+**Latency** — Delay between sending and receiving data.
+**Protocol** — Rules used for communication.
+**Frame** — Layer 2 data unit.
+**Packet** — Layer 3 data unit.
+**Segment** — Common term for a TCP Layer 4 data unit.
+**Port** — Logical endpoint used by applications.
+**MAC address** — Layer 2 hardware address.
+**IP address** — Layer 3 logical address.
+
+### Traffic Types
+**Unicast**
 
 One sender → one receiver.
 
-Broadcast
+**Broadcast**
 
 One sender → all devices within the broadcast domain.
 
-Multicast
+**Multicast**
 
 One sender → a specific group of receivers.
 
-2. IP Addressing
-IPv4
+# 2. IP Addressing
+
+**IPv4**
 
 IPv4 uses 32-bit addresses written as four decimal octets.
 
@@ -109,15 +111,15 @@ Example:
 Each octet ranges from:
 
 0 - 255
-Network and Host Portions
 
+### Network and Host Portions
 An IPv4 address consists of:
 
 Network portion + Host portion
 
 The subnet mask determines which bits belong to each portion.
 
-Private IPv4 Ranges
+**Private IPv4 Ranges**
 10.0.0.0/8
 
 172.16.0.0/12
@@ -126,7 +128,7 @@ Private IPv4 Ranges
 
 Private addresses are commonly used inside local networks.
 
-Special IPv4 Addresses
+### Special IPv4 Addresses
 Loopback
 127.0.0.0/8
 
