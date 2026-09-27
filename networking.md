@@ -129,7 +129,7 @@ The subnet mask determines which bits belong to each portion.
 Private addresses are commonly used inside local networks.
 
 ### Special IPv4 Addresses
-Loopback
+**Loopback**
 127.0.0.0/8
 
 Commonly:
@@ -138,24 +138,25 @@ Commonly:
 
 Used to refer to the local machine.
 
-APIPA
+**APIPA**
 169.254.0.0/16
 
 A host may automatically assign an address from this range when DHCP fails.
 
-Public vs Private IP
-Private IP — Used internally.
+**Public vs Private IP**
+**Private IP** — Used internally.
 Public IP — Routable across the public Internet.
-Static vs Dynamic Addressing
-Static
+
+### Static vs Dynamic Addressing
+**Static**
 
 Manually configured.
 
-Dynamic
+**Dynamic**
 
 Automatically assigned, commonly through DHCP.
 
-Default Gateway
+### Default Gateway
 
 The default gateway is the device a host uses to reach destinations outside its local network.
 
@@ -163,7 +164,8 @@ Example:
 
 Host:       192.168.1.20
 Gateway:    192.168.1.1
-IPv6
+
+### IPv6
 
 IPv6 uses 128-bit addresses.
 
@@ -185,9 +187,10 @@ IPv6 loopback:
 IPv6 link-local addresses commonly begin with:
 
 fe80::
-3. Subnetting
-What Is Subnetting?
 
+# 3. Subnetting
+   
+## What Is Subnetting?
 Subnetting divides a larger IP network into smaller networks.
 
 Benefits include:
@@ -197,8 +200,8 @@ Network organization
 Smaller broadcast domains
 Segmentation
 Better address management
-CIDR
 
+### CIDR
 CIDR represents the number of network bits.
 
 Example:
@@ -207,16 +210,18 @@ Example:
 
 /24 means the first 24 bits are network bits.
 
-Common Prefixes
-CIDR	Subnet Mask	Usable Hosts
-/24	255.255.255.0	254
-/25	255.255.255.128	126
-/26	255.255.255.192	62
-/27	255.255.255.224	30
-/28	255.255.255.240	14
-/29	255.255.255.248	6
-/30	255.255.255.252	2
-Important Addresses
+### Common Prefixes
+| CIDR | Subnet-Mask | Usable-Hosts |
+|---|----|---|
+|/24|	255.255.255.0 |   254 |
+|/25|	255.255.255.128  | 126 |
+|/26|   255.255.255.192	| 62 |
+|/27|	255.255.255.224	| 30 |
+|/28|   255.255.255.240	| 14 |
+|/29|	255.255.255.248	| 6 |
+|/30|	255.255.255.252	| 2 |
+  
+### Important Addresses
 
 Every subnet normally has:
 
@@ -232,28 +237,24 @@ Network:    192.168.10.0
 First host: 192.168.10.1
 Last host:  192.168.10.62
 Broadcast:  192.168.10.63
-VLSM
 
+### VLSM
 Variable Length Subnet Masking allows different subnet sizes to be used within the same network.
 
-FLSM
-
+### FLSM
 Fixed Length Subnet Masking uses the same subnet size for all subnets.
 
-4. Switching
-What Is Switching?
-
+# 4. Switching
+## What Is Switching?
 Switching is the process of forwarding Ethernet frames between devices within a network.
 
-MAC Addresses
-
+### MAC Addresses
 A MAC address is a Layer 2 address associated with a network interface.
 
 Example:
-
 00:1A:2B:3C:4D:5E
-MAC Address Table
 
+### MAC Address Table
 A switch learns which MAC addresses are reachable through which ports.
 
 Basic process:
@@ -265,70 +266,60 @@ Learn source MAC
 Check destination MAC
      ↓
 Forward or flood
-Forwarding
 
+### Forwarding
 If the destination MAC is known, the switch forwards the frame through the appropriate port.
 
-Flooding
-
+### Flooding
 If the destination MAC is unknown, the switch may flood the frame out other ports within the same VLAN.
 
 Broadcast frames are also flooded within their broadcast domain.
 
-Collision Domain
-
+### Collision Domain
 Each switch port normally represents a separate collision domain.
 
-Broadcast Domain
-
+### Broadcast Domain
 A broadcast domain is the set of devices that receive a Layer 2 broadcast.
 
 VLANs can be used to separate broadcast domains.
 
-5. VLANs
-What Is a VLAN?
-
+# 5. VLANs
+## What Is a VLAN?
 A VLAN is a logical network segment created on a switch.
 
 VLANs allow one physical switching infrastructure to contain multiple logical networks.
 
-Benefits
+**Benefits**
 Segmentation
 Smaller broadcast domains
 Better organization
 Improved security
 Separation of different groups
-Access Port
 
+### Access Port
 An access port normally carries traffic belonging to one VLAN.
 
-Trunk Port
-
+### Trunk Port
 A trunk can carry traffic for multiple VLANs.
 
-802.1Q
-
+### 802.1Q
 IEEE 802.1Q is commonly used for VLAN tagging on trunk links.
 
-Native VLAN
-
+### Native VLAN
 The native VLAN is the VLAN associated with untagged traffic on an 802.1Q trunk.
 
-Inter-VLAN Routing
-
+### Inter-VLAN Routing
 Devices in different VLANs require Layer 3 routing to communicate.
 
 Common methods include:
-
 Router-on-a-stick
 Layer 3 switching
-6. Routing
-What Is Routing?
 
+# 6. Routing
+## What Is Routing?
 Routing determines how packets travel between different IP networks.
 
-Routing Table
-
+## Routing Table
 A router uses a routing table to determine where packets should be forwarded.
 
 A route can contain information such as:
@@ -338,23 +329,20 @@ Subnet mask/prefix
 Next hop
 Outgoing interface
 Metric
-Connected Routes
 
+## Connected Routes
 Routes automatically created for directly connected networks.
 
-Static Routes
-
+## Static Routes
 Routes manually configured by an administrator.
 
-Default Route
-
+## Default Route
 Used when a more specific route does not exist.
 
 IPv4 example:
-
 0.0.0.0/0
-Dynamic Routing
 
+## Dynamic Routing
 Dynamic routing protocols allow routers to exchange routing information.
 
 Examples:
@@ -363,17 +351,15 @@ RIP
 OSPF
 EIGRP
 BGP
-Next Hop
 
+## Next Hop
 The next-hop address identifies the router or device to which a packet should be forwarded.
 
-Longest Prefix Match
-
+## Longest Prefix Match
 When multiple routes match a destination, routers generally prefer the most specific matching route.
 
-7. DHCP
-What Is DHCP?
-
+# 7. DHCP
+### What Is DHCP?
 DHCP automatically provides network configuration information to clients.
 
 It can provide:
@@ -383,7 +369,8 @@ Subnet mask
 Default gateway
 DNS server
 Lease information
-DORA
+
+### DORA
 
 The basic DHCP process is:
 
@@ -394,32 +381,28 @@ Offer
 Request
    ↓
 Acknowledge
-DHCP Lease
 
+### DHCP Lease
 A DHCP address is normally assigned for a defined period.
 
-DHCP Server
-
+### DHCP Server
 Provides configuration information to clients.
 
-DHCP Client
-
+### DHCP Client
 Requests network configuration.
 
-DHCP Relay
-
+### DHCP Relay
 Allows DHCP requests to cross routers so that a DHCP server can serve clients on another network.
 
-DHCP Security
-
+## DHCP Security
 Important defensive technologies include:
 
-DHCP snooping
+### DHCP snooping
 Trusted/untrusted ports
 IP Source Guard
-8. DNS
-What Is DNS?
 
+# 8. DNS
+### What Is DNS?
 The Domain Name System translates human-readable domain names into information such as IP addresses.
 
 Example:
@@ -427,7 +410,8 @@ Example:
 example.com
      ↓
 93.184.216.34
-DNS Hierarchy
+
+### DNS Hierarchy
 Root
  ↓
 TLD
@@ -435,70 +419,71 @@ TLD
 Authoritative DNS
  ↓
 Domain
-DNS Resolver
 
+### DNS Resolver
 A resolver performs DNS queries on behalf of clients.
 
-Common DNS Records
-Record	Purpose
-A	IPv4 address
-AAAA	IPv6 address
-CNAME	Alias
-MX	Mail server
-NS	Name server
-TXT	Text information
-PTR	Reverse lookup
-SOA	Zone authority information
-Forward Lookup
+### Common DNS Records
+| Record |	Purpose |
+|---|---|
+| A | IPv4 address |
+| AAAA| IPv6 address |
+| CNAME |Alias |
+| MX| Mail server |
+| NS| Name server |
+| TXT| Text information |
+| PTR| Reverse lookup |
+| SOA| Zone authority information |
 
+### Forward Lookup
 Domain name → IP address.
 
-Reverse Lookup
-
+### Reverse Lookup
 IP address → domain name.
 
-DNS Caching
-
+### DNS Caching
 Resolvers and clients may cache DNS responses to reduce repeated queries.
 
-Useful Commands
+### Useful Commands
 dig example.com
 nslookup example.com
 host example.com
-DNS Security Concepts
+
+### DNS Security Concepts
 DNSSEC
 DNS spoofing
 DNS cache poisoning
 DNS tunneling
 DNS enumeration
-9. NAT
-What Is NAT?
 
+# 9. NAT
+### What Is NAT?
 Network Address Translation changes IP address information as traffic passes through a network device.
 
 NAT is commonly used to allow private networks to communicate with public networks.
 
-Types of NAT
-Static NAT
+### Types of NAT
+**Static NAT**
 
 One private address maps to one public address.
 
-Dynamic NAT
+#### Dynamic NAT
 
 Private addresses are translated using a pool of public addresses.
 
-PAT
-
+#### PAT
 Port Address Translation allows multiple private hosts to share a public IP by using different source ports.
 
 PAT is commonly called NAT overload.
 
-NAT Terminology
+### NAT Terminology
+
 Inside local
 Inside global
 Outside local
 Outside global
-NAT Example
+
+### NAT Example
 192.168.1.10
       ↓
    NAT/PAT
@@ -506,8 +491,8 @@ NAT Example
 203.x.x.x
       ↓
   Internet
-NAT Limitations
-
+  
+### NAT Limitations
 NAT can complicate:
 
 End-to-end connectivity
@@ -517,46 +502,40 @@ Inbound connections
 
 NAT is not a replacement for a firewall.
 
-10. ACLs
-What Is an ACL?
+# 10. ACLs
+### What Is an ACL?
 
 An Access Control List is a set of rules used to permit or deny traffic.
 
 ACLs can be used to control network access.
 
-Standard ACL
-
+### Standard ACL
 Primarily filters based on source IPv4 address.
 
-Extended ACL
-
+### Extended ACL
 Can filter based on information such as:
 
 Source IP
 Destination IP
 Protocol
 Port
-ACL Processing
 
+### ACL Processing
 Rules are evaluated in order.
 
 The first matching rule is generally applied.
 
-Implicit Deny
-
+### Implicit Deny
 ACL processing includes an implicit deny at the end if traffic does not match a permitted rule.
 
-Inbound vs Outbound
-Inbound
-
+### Inbound vs Outbound
+#### Inbound
 Traffic is evaluated as it enters an interface.
 
-Outbound
-
+#### Outbound
 Traffic is evaluated as it leaves an interface.
 
-Wildcard Masks
-
+### Wildcard Masks
 Cisco ACLs commonly use wildcard masks.
 
 Example:
@@ -565,46 +544,40 @@ Example:
 
 This can represent a /24 network when used appropriately in an ACL.
 
-Security Relevance
-
+### Security Relevance
 ACLs can help:
 
 Restrict network access
 Limit services
 Segment traffic
 Reduce attack surface
-11. Wireless Networking
-WLAN
 
+# 11. Wireless Networking
+## WLAN
 A Wireless Local Area Network allows devices to communicate using radio instead of physical Ethernet connections.
 
-Access Point
-
+## Access Point
 An access point provides wireless connectivity to clients.
 
-SSID
-
+## SSID
 The Service Set Identifier is the network name users see when selecting a Wi-Fi network.
 
-BSSID
-
+## BSSID
 Identifies a specific wireless access point/radio interface.
 
-Frequency Bands
-
+## Frequency Bands
 Common Wi-Fi bands include:
 
 2.4 GHz
 5 GHz
 6 GHz
-Channels
 
+## Channels
 Wireless devices communicate over radio channels.
 
 Channel overlap and interference can reduce performance.
 
-Wireless Security
-
+## Wireless Security
 Common technologies include:
 
 WPA2
@@ -612,35 +585,37 @@ WPA3
 WPA2/WPA3 Enterprise
 PSK
 802.1X
-Wireless Security Threats
+
+## Wireless Security Threats
 Rogue access points
 Evil twin attacks
 Weak passwords
 Deauthentication attacks
 Unauthorized clients
-12. Network Security
-CIA Triad
-Confidentiality
+
+# 12. Network Security
+## CIA Triad
+### Confidentiality
 
 Prevent unauthorized access to information.
 
-Integrity
+### Integrity
 
 Prevent unauthorized modification.
 
-Availability
+### Availability
 
 Keep systems and services accessible.
 
-Authentication
+## Authentication
 
 Verifies who a user or device is.
 
-Authorization
+## Authorization
 
 Determines what an authenticated entity is allowed to access.
 
-Common Security Controls
+## Common Security Controls
 Firewall
 IDS
 IPS
@@ -650,7 +625,8 @@ Network segmentation
 NAC
 Authentication systems
 Logging and monitoring
-Common Network Attacks
+
+## Common Network Attacks
 ARP spoofing
 DNS spoofing
 DHCP attacks
@@ -660,7 +636,8 @@ Man-in-the-middle attacks
 Denial-of-service attacks
 Rogue access points
 Evil twin attacks
-Defensive Technologies
+
+## Defensive Technologies
 DHCP snooping
 Dynamic ARP Inspection
 Port security
@@ -669,8 +646,9 @@ IP Source Guard
 Network segmentation
 Strong authentication
 Monitoring and logging
-13. Troubleshooting
-General Methodology
+
+# 13. Troubleshooting
+## General Methodology
 
 Troubleshoot systematically rather than randomly changing configurations.
 
@@ -691,7 +669,8 @@ Check services
 Test the solution
        ↓
 Document the result
-Physical Layer
+
+### Physical Layer
 
 Check:
 
@@ -700,49 +679,43 @@ Cables
 Interfaces
 Wireless signal
 Link status
-Layer 2
 
+### Layer 2
 Check:
-
 VLAN
 MAC address table
 Trunk
 Access port
 STP
 Interface errors
-Layer 3
 
+### Layer 3
 Check:
-
 IP address
 Subnet mask
 Default gateway
 Routing table
 Routes
 ACLs
-Services
 
+### Services
 Check:
-
 DHCP
 DNS
 NAT
 Application services
-Common Symptoms
-169.254.x.x Address
 
+### Common Symptoms
+169.254.x.x Address
 May indicate that DHCP configuration failed.
 
-Can Reach IP but Not Domain
-
+### Can Reach IP but Not Domain
 Possible DNS problem.
 
-Can Reach Local Network but Not Remote Network
-
+### Can Reach Local Network but Not Remote Network
 Possible gateway or routing problem.
 
-Devices in Same VLAN Cannot Communicate
-
+### Devices in Same VLAN Cannot Communicate
 Check:
 
 VLAN assignment
@@ -750,7 +723,8 @@ Interface status
 IP configuration
 Switch configuration
 ACLs
-Useful Troubleshooting Commands
+
+### Useful Troubleshooting Commands
 
 Linux:
 
@@ -772,80 +746,89 @@ show vlan brief
 show mac address-table
 show arp
 show ip route
-14. CLI Commands
-Cisco IOS
-Enter Privileged EXEC Mode
+
+# 14. CLI Commands
+### Cisco IOS
+### Enter Privileged EXEC Mode
 enable
-Enter Global Configuration Mode
+### Enter Global Configuration Mode
 configure terminal
-Display Running Configuration
+### Display Running Configuration
 show running-config
-Display Interfaces
+### Display Interfaces
 show interfaces
-Display Interface Summary
+### Display Interface Summary
 show ip interface brief
-Display Routing Table
+### Display Routing Table
 show ip route
-Display VLANs
+### Display VLANs
 show vlan brief
-Display MAC Address Table
+### Display MAC Address Table
 show mac address-table
-Display ARP Table
+### Display ARP Table
 show arp
-Test Connectivity
+### Test Connectivity
 ping <ip-address>
-Trace a Path
+### Trace a Path
 traceroute <ip-address>
-Basic Interface Configuration
+## Basic Interface Configuration
 configure terminal
 interface <interface>
 ip address <ip-address> <subnet-mask>
 no shutdown
-Linux Networking Commands
-Show IP Addresses
+
+## Linux Networking Commands
+### Show IP Addresses
 ip addr
-Show Routing Table
+### Show Routing Table
 ip route
-Test Connectivity
+### Test Connectivity
 ping <ip-address>
-Trace a Route
+### Trace a Route
 traceroute <ip-address>
-Show Listening/Network Sockets
+### Show Listening/Network Sockets
 ss
-DNS Lookup
+### DNS Lookup
 dig <domain>
-DNS Query
+### DNS Query
 nslookup <domain>
-Show ARP/Neighbor Information
+### Show ARP/Neighbor Information
 ip neigh
-Quick Reference
-OSI
-7  Application
-6  Presentation
-5  Session
-4  Transport
-3  Network
-2  Data Link
-1  Physical
-TCP/IP
-Application
-Transport
-Internet
-Network Access
-Common Protocols
-Protocol	Purpose
-HTTP	Web traffic
-HTTPS	Encrypted web traffic
-SSH	Secure remote administration
-DNS	Name resolution
-DHCP	Automatic network configuration
-FTP	File transfer
-SMTP	Email transmission
-ICMP	Network diagnostic/control messages
-ARP	IPv4 address-to-MAC resolution
-TCP	Reliable transport
-UDP	Connectionless transport
-Networking Mental Model
+
+## Quick Reference
+|OSI| Model| 
+|---|---|
+|7 | Application |
+|6 | Presentation |
+|5 | Session |
+|4 | Transport |
+|3 | Network |
+|2 | Data Link |
+|1 | Physical |
+
+|TCP/IP|
+|--|
+|Application |
+|Transport |
+|Internet |
+|Network Access |
+
+## Common Protocols
+|Protocol|	Purpose|
+|---|---|
+|HTTP| Web traffic |
+|HTTPS| Encrypted web traffic|
+|SSH|	Secure remote administration|
+|DNS|	Name resolution|
+|DHCP| Automatic network configuration|
+|FTP|File transfer|
+|SMTP| Email transmission|
+|ICMP| Network diagnostic/control messages |
+|ARP|	IPv4 address-to-MAC resolution |
+|TCP|	Reliable transport |
+|UDP|	Connectionless transport|
+
+## Networking Mental Model
 
 When troubleshooting or analyzing network traffic, think through the communication path:
 
@@ -867,10 +850,11 @@ The goal is not just to memorize commands or protocols.
 
 Understand:
 
-What is communicating?
+### What is communicating?
 
-How is it addressed?
+### How is it addressed?
 
-How does the device know where to send it?
+### How does the device know where to send it?
 
-What protocol is being used?
+### What protocol is being used?
+
